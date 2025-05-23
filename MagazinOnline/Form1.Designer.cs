@@ -36,7 +36,6 @@
             textBox1 = new TextBox();
             label1 = new Label();
             panel2 = new Panel();
-            comboBox1 = new ComboBox();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             linkLabel2 = new LinkLabel();
@@ -92,7 +91,7 @@
             button2.FlatAppearance.BorderColor = Color.White;
             button2.FlatStyle = FlatStyle.Flat;
             button2.ForeColor = Color.White;
-            button2.Location = new Point(76, 281);
+            button2.Location = new Point(73, 221);
             button2.Name = "button2";
             button2.Size = new Size(140, 38);
             button2.TabIndex = 1;
@@ -122,7 +121,6 @@
             // 
             panel2.BackColor = Color.Transparent;
             panel2.BackgroundImageLayout = ImageLayout.Stretch;
-            panel2.Controls.Add(comboBox1);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(linkLabel2);
@@ -134,18 +132,9 @@
             panel2.Controls.Add(textBox1);
             panel2.Location = new Point(211, 71);
             panel2.Name = "panel2";
-            panel2.Size = new Size(293, 374);
+            panel2.Size = new Size(293, 320);
             panel2.TabIndex = 4;
             panel2.Paint += panel2_Paint;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(86, 228);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 11;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // pictureBox2
             // 
@@ -173,7 +162,7 @@
             // 
             linkLabel2.AutoSize = true;
             linkLabel2.LinkColor = Color.Gray;
-            linkLabel2.Location = new Point(95, 334);
+            linkLabel2.Location = new Point(88, 262);
             linkLabel2.Name = "linkLabel2";
             linkLabel2.Size = new Size(112, 15);
             linkLabel2.TabIndex = 8;
@@ -263,6 +252,5 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
-        private ComboBox comboBox1;
     }
 }

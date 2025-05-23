@@ -76,37 +76,53 @@ namespace MagazinOnline
 
         private void btnAprobaNegociere_Click(object sender, EventArgs e)
         {
-            // Ex: setează preț negociat = preț curent - 10%
-            if (dataGridViewProduse.CurrentRow != null)
+            if (dataGridViewOferte.CurrentRow != null)
             {
-                int id = Convert.ToInt32(dataGridViewProduse.CurrentRow.Cells["Id"].Value);
-                var produs = produse.FirstOrDefault(p => p.Id == id && p.EsteNegociabil);
-                if (produs != null)
+                int produsId = Convert.ToInt32(dataGridViewOferte.CurrentRow.Cells["ProductId"].Value);
+                string cumparator = dataGridViewOferte.CurrentRow.Cells["BuyerEmail"].Value.ToString();
+
+                var oferta = oferte.FirstOrDefault(o => o.ProductId == produsId && o.BuyerEmail == cumparator);
+                var produs = produse.FirstOrDefault(p => p.Id == produsId && p.VanzatorEmail == vanzatorCurent.Email);
+
+                if (oferta != null && produs != null)
                 {
-                    produs.Price *= 0.9m; // exemplu: reducere 10%
+                    produs.Price = oferta.OfferPrice; // Acceptă prețul negociat
+
+                    // Ștergem produsul vândut
+                    produse.Remove(produs);
+
+                    // Ștergem oferta aferentă
+                    oferte.Remove(oferta);
+
                     SalveazaProduse();
+                    SalveazaOferta();
                     AfiseazaProduse();
-                    MessageBox.Show("Preț negociat aprobat.");
+                    AfiseazaOferta();
+
+                    MessageBox.Show("Oferta a fost aprobată. Produsul a fost vândut și eliminat din listă.");
                 }
             }
         }
 
+
         private void btnAnuleazaNegociere_Click(object sender, EventArgs e)
         {
-            // Marcare ca non-negociabil
-            if (dataGridViewProduse.CurrentRow != null)
+            if (dataGridViewOferte.CurrentRow != null)
             {
-                int id = Convert.ToInt32(dataGridViewProduse.CurrentRow.Cells["Id"].Value);
-                var produs = produse.FirstOrDefault(p => p.Id == id && p.EsteNegociabil);
-                if (produs != null)
+                int produsId = Convert.ToInt32(dataGridViewOferte.CurrentRow.Cells["ProductId"].Value);
+                string cumparator = dataGridViewOferte.CurrentRow.Cells["BuyerEmail"].Value.ToString();
+
+                var oferta = oferte.FirstOrDefault(o => o.ProductId == produsId && o.BuyerEmail == cumparator);
+                if (oferta != null)
                 {
-                    produs.EsteNegociabil = false;
-                    SalveazaProduse();
-                    AfiseazaProduse();
-                    MessageBox.Show("Negocierea a fost anulată.");
+                    oferte.Remove(oferta); // Respingere negociere
+                    SalveazaOferta();
+                    AfiseazaOferta();
+                    MessageBox.Show("Oferta a fost respinsă.");
                 }
             }
         }
+
 
         private void IncarcaProduse()
         {
@@ -194,17 +210,25 @@ namespace MagazinOnline
                                 {
                                     NumeProdus = produs.Name,
                                     Cumparator = oferta.BuyerEmail,
-                                    Pret = oferta.OfferPrice
+                                    Pret = oferta.OfferPrice,
+                                    ProdusId = produs.Id
                                 };
 
             dataGridViewOferte.Columns.Add("Produs", "Produs");
             dataGridViewOferte.Columns.Add("Cumparator", "Cumparator");
             dataGridViewOferte.Columns.Add("Pret", "Preț propus");
+            dataGridViewOferte.Columns.Add("ProductId", "ProductId");
+            dataGridViewOferte.Columns["ProductId"].Visible = false;
+
+            dataGridViewOferte.Columns.Add("BuyerEmail", "BuyerEmail");
+            dataGridViewOferte.Columns["BuyerEmail"].Visible = false;
+
 
             foreach (var item in oferteAfisate)
             {
-                dataGridViewOferte.Rows.Add(item.NumeProdus, item.Cumparator, item.Pret);
+                dataGridViewOferte.Rows.Add(item.NumeProdus, item.Cumparator, item.Pret, item.ProdusId, item.Cumparator);
             }
+
         }
 
 

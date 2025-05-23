@@ -100,6 +100,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.BackgroundImage = (Image)resources.GetObject("tabPage1.BackgroundImage");
             tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(button3);
             tabPage1.Controls.Add(button2);
@@ -145,6 +146,7 @@
             // 
             // dataGridViewVanzatori
             // 
+            dataGridViewVanzatori.BackgroundColor = Color.DarkGray;
             dataGridViewVanzatori.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewVanzatori.Location = new Point(-4, 0);
             dataGridViewVanzatori.Name = "dataGridViewVanzatori";
@@ -176,6 +178,7 @@
             // 
             // dataGridViewProduse
             // 
+            dataGridViewProduse.BackgroundColor = Color.DarkGray;
             dataGridViewProduse.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewProduse.Location = new Point(-4, 0);
             dataGridViewProduse.Name = "dataGridViewProduse";
@@ -191,6 +194,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(953, 616);
             Controls.Add(tabControl1);
             Controls.Add(panel1);

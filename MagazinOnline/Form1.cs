@@ -8,10 +8,6 @@ namespace MagazinOnline
         public Form1()
         {
             InitializeComponent();
-            comboBox1.Items.Add("Cumpărător");
-            comboBox1.Items.Add("Vânzător");
-            comboBox1.Items.Add("Administrator");
-            comboBox1.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)

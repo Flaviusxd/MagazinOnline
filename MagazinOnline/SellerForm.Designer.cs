@@ -15,7 +15,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SellerForm));
             lblBunVenit = new Label();
-            btnCereAprobare = new Button();
             groupBox1 = new GroupBox();
             chkNegociabil = new CheckBox();
             txtDescriere = new TextBox();
@@ -55,15 +54,6 @@
             lblBunVenit.TabIndex = 0;
             lblBunVenit.Text = "Bun venit!";
             lblBunVenit.Click += lblBunVenit_Click;
-            // 
-            // btnCereAprobare
-            // 
-            btnCereAprobare.Location = new Point(257, 53);
-            btnCereAprobare.Name = "btnCereAprobare";
-            btnCereAprobare.Size = new Size(150, 30);
-            btnCereAprobare.TabIndex = 1;
-            btnCereAprobare.Text = "Cere aprobare cont";
-            btnCereAprobare.Click += btnCereAprobare_Click;
             // 
             // groupBox1
             // 
@@ -248,7 +238,6 @@
             Controls.Add(tabControl1);
             Controls.Add(panel1);
             Controls.Add(lblBunVenit);
-            Controls.Add(btnCereAprobare);
             Controls.Add(groupBox1);
             Controls.Add(btnAnuleazaVanzare);
             Controls.Add(btnAprobaNegociere);
@@ -272,7 +261,6 @@
         }
 
         private System.Windows.Forms.Label lblBunVenit;
-        private System.Windows.Forms.Button btnCereAprobare;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtNume;
         private System.Windows.Forms.NumericUpDown numPret;
